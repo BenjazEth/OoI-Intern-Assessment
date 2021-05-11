@@ -141,13 +141,7 @@ class Register extends Component {
                       onChange={this.onChange}
                       error={errors.country}
                     />
-                    <TextFieldGroup
-                      placeholder="Avatar"
-                      name="image" 
-                      value={this.state.image}
-                      onChange={this.onChange}
-                      error={errors.image}
-                    />
+ 
                     <input type="submit" className="btn btn-info btn-block mt-4" />
                   </form>
                 </div>
