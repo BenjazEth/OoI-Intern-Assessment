@@ -35,18 +35,32 @@ class App {
 
   start() {
     this.server.listen(this.config.port, () => {
-      this.logger.info(`listening on http://localhost:${this.config.port}`);
+      this.logger.info(`listening on http://localhost:${this.config.port}, stateDate: ${new Date().getTime()}`);
+
     });
+    
     this.logger.info(`started in ${this.environment}.`);
   }
-
   async exit() {
     this.logger.info(`exiting`);
     process.exit();
   }
 
   async getStatus() {
-    return await this.db.models.Example.countDocuments();
+    let startTime = Date.now();
+    let counter = 0;
+
+    function upTime() {
+      counter += 1;
+      console.log(`The server has been running for ${counter} seconds`);
+    };
+
+    setInterval(upTime, 1000);
+
+    this.logger.info(`listening on http://localhost:${this.config.port}, stateDate: ${new Date().getTime()}`);
+
+
+    return await this.db.models.User.countDocuments();
   }
 }
 
